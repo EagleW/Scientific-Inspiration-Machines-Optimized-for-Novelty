@@ -97,7 +97,7 @@ with open(filename, 'r') as f:
 
         prompt = '\n'.join(prompt)
         response = openai.Completion.create(
-            model="text-davinci-002",
+            model="text-davinci-003",
             prompt=prompt,
             temperature=1,
             top_p=1,

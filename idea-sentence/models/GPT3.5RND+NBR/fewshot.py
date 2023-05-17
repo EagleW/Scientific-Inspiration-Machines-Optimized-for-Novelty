@@ -124,7 +124,7 @@ for fname in ['ct', 'sn', 'kg']:
                 prompt = '\n'.join(prompt)
 
             response = openai.Completion.create(
-                model="text-davinci-002",
+                model="text-davinci-003",
                 prompt=prompt,
                 temperature=1,
                 top_p=1,
