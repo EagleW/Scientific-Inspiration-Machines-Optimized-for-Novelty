@@ -115,7 +115,6 @@ with open(in_name, 'r') as file_j:
         tmp['retrieve'] = get_retrieve(current_context, contexts, context_embeddings, type_)
         wf.write(json.dumps(tmp) + '\n')
     wf.close()
-os.makedirs('../models/GPT3.5RND/local_dataset', exist_ok=True)
-src = out_name
-dst = '../models/GPT3.5RND/local_dataset/test.json'
-shutil.copy(src, dst)
+src =  '../models/GPT3.5Retr/local_dataset/'
+dst = '../models/GPT3.5RND/local_dataset/'
+shutil.copytree(src, dst)
