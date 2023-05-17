@@ -27,7 +27,7 @@ Table of Contents
 * Ubuntu 22.04
 
 
-### Setup Instructions
+### Environment Setup Instructions
 
 To set up the environment for this repository, please follow the steps below:
 
@@ -52,7 +52,7 @@ To install the required Python dependencies, run the following command:
 pip install -r requirements.txt
 ```
 
-#### Data Description
+### Data Setup
 
 
 ## Quickstart
