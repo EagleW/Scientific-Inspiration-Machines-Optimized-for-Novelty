@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ### Data Setup
 
-
+e2t
 ## Quickstart
 
 

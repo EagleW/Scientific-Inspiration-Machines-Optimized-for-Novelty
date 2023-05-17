@@ -22,50 +22,12 @@ relation_template = [
     'In that context, which %s can be used for %s, and why?\n',
     'In that context, which %s do we use %s, and why?\n'
 ]
-relation_template1 = [
-    'In that context, which %s can be used for %s, and why?\n%s',
-    'In that context, which %s do we use %s, and why?\n%s'
-]
 start_time = time()
 forward_ = []
 backward_ = []
 quesid2ans_forward = {}
 quesid2ans_backward = {}
-
-examples = [[],[]]
-
-in_name = '../T5/local_context_dataset/train.json'
-with open(in_name, 'r') as file_j:
-    for idxn, line in tqdm(enumerate(file_j), "Encoding"):
-        pdf_dict = json.loads(line)
-        input_t, cc = pdf_dict['input'].split('| context: ')
-
-        type_ = input_t.split()[-1]
-
-        context = input_t + ' context: ' + cc
-
-        entity = pdf_dict['entity']
-        output = pdf_dict['output']
-        rel_sent = pdf_dict['rel_sent']
-        type_e = e2t[entity].lower()
-        type_o = e2t[output].lower()
-        prompt = []
-
-        cc1 = 'Consider the following context: ' + cc
-        if pdf_dict['forward']:
-            prompt.append(cc1)
-            prompt.append(relation_template1[0] % (type_o, entity, rel_sent))
-            prompt = '\n'.join(prompt)
-            examples[0].append(prompt)
-        else:
-            prompt.append(cc1)
-            prompt.append(relation_template1[1] % (type_o, entity, rel_sent))
-            prompt = '\n'.join(prompt)
-            examples[1].append(prompt)
-print('Finish processsing samples')
-
-
-filename = 'local_gpt3_dataset/test.json'
+filename = 'local_dataset/test.json'
 with open(filename, 'r') as f:
     for line in tqdm(f):
         cur_data = json.loads(line)
@@ -80,21 +42,11 @@ with open(filename, 'r') as f:
         type_o = e2t[output].lower()
 
         cc = prompt_ + cur_data['context']
+        prompt = [retrieve,cc]
         if cur_data['forward']:
-            txts = "\n".join(random.sample(examples[0], k=5))
-            while len(tokenizer(txts)['input_ids']) > 2000:
-                txts = "\n".join(random.sample(examples[0], k=5))
-
-            prompt = [txts,cc]
             prompt.append(relation_template[0] % (type_o, entity))
         else:
-            txts = " ".join(random.sample(examples[1], k=5))
-            while len(tokenizer(txts)['input_ids']) > 2000:
-                txts = " ".join(random.sample(examples[1], k=5))
-
-            prompt = [txts,cc]
             prompt.append(relation_template[1] % (type_o, entity))
-
         prompt = '\n'.join(prompt)
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -111,10 +63,14 @@ with open(filename, 'r') as f:
 
         choices = response['choices']
         pred = choices[0]['text'].strip()
-        if pred[-1] != '.':
-            pred += '.'
-        ref = cur_data['rel_sent']     
-        
+        if len(pred) > 0: 
+            if pred[-1] != '.':
+                pred += '.'
+        else:
+            pred = ''
+
+        ref = cur_data['rel_sent']
+
         tmp = {
             'input': prompt,
             'pred': pred,
