@@ -54,22 +54,46 @@ pip install -r requirements.txt
 
 ### Data Setup
 
-e2t
+1. Unzip all the zip files located in the data folder, including its subfolders.
+2. Place the following folders, extracted from their respective zip files, under the data folder: `kg`,`ct`, and `gold_subset`
+3. Locate the `local_context_dataset` folder unzipped from `data/idea-sentence/local_context_dataset.zip`.Move it to `idea-sentence/models/T5`.
+4. Find the `local_dataset` folder unzipped from `data/idea-node/local_dataset.zip`. Place them in `idea-node/models/Dual_Encoder`.
+5. Copy the file `e2t.json` and paste it into the following folders:  `idea-node\models\GPT3.5*\`, `idea-node\preprocess\`, `idea-sentence\models\GPT3.5*\`, and `idea-sentence\preprocess\`
+  
+### Data Preprocess
+
+1. Navigate to the `idea-node\preprocess` and run the `bash preprocess.sh`
+2. Navigate to the `idea-sentence\preprocess` and run the `bash preprocess.sh` 
+
+### Data and Code Description
+
+The project data includes the following components:
+
+1. `data/local_context_dataset`: This folder contains the training, validation, and testing files for idea sentence generation.
+2. `data/local_dataset`: This folder contains the training, validation, and testing files for idea node prediction.
+3. `data/kg/*.json`: The `data/kg` directory contains files that store the original Information Extraction (IE) results for all paper abstracts.
+4. `data/ct/*.csv`: The `data/ct` directory contains files that represent the citation network for all papers.
+5. `data/gold_subset`: This directory contains our gold annotation subsets.
+6. `idea-node/evaluation` and `idea-sentence/evaluation` contain sample evaluation code.
+
+
 ## Quickstart
 
-
-### Idea Sentence Generation
-
 ### Training
+
+To train the model under `*\models\*`, run the following command:
+
+```bash
+bash finetune_*.sh 
+```
 
 #### Test
 
+To test the model under `*\models\*`, run the following command:
 
-### Idea Node Prediction
 
-### Training
-
-#### Test
-
+```bash
+bash eval_*.sh 
+```
 
 ## Citation

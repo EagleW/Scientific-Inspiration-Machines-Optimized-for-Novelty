@@ -10,7 +10,8 @@ bart_scorer.load(path='bart.pth')
 map_gt = {
     'forward': 'tail',
     'backward': 'head'
-}dir_names = [
+}
+dir_names = [
     '../models/Dual_Encoder/%s/'
 ]
 model_nameses = [
