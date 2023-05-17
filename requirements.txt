@@ -1,0 +1,12 @@
+tqdm
+accelerate
+transformers==4.19.2
+datasets
+sentencepiece
+sacrebleu
+networkx
+gpustat
+wandb
+bert-score
+openai
+sentence-transformers
