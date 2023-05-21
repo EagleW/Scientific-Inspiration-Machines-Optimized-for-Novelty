@@ -19,6 +19,7 @@ import wandb
 import pickle
 import math
 from statistics import mean
+import operator
 
 def Log2(x):
     return (math.log10(x) /
@@ -394,7 +395,13 @@ class Trainer:
                 tcount, tmrr, thit1, thit3, thit5, thit10 = 0, 0, 0, 0, 0, 0
                 topk_score_info = {}
                 for idx, (p, s) in enumerate(zip(pred, score)):
-                    topk_score_info[p] = s
+                    if p not in topk_score_info:
+                        topk_score_info[p] = s
+                    else:
+                        if s > topk_score_info[p]:
+                            topk_score_info[p] = s
+                sorted_d = sorted(topk_score_info.items(), key=operator.itemgetter(1),reverse=True)
+                for idx, (p, s) in enumerate(sorted_d):
                     if p in ref:
                         tmrr += 1/(idx + 1)
                         thit1 += 1 if idx + 1 <= 1 else 0
