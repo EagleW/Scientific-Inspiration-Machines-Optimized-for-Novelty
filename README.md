@@ -58,12 +58,12 @@ pip install -r requirements.txt
 2. Place the following folders, extracted from their respective zip files, under the data folder: `kg`,`ct`, and `gold_subset`
 3. Locate the `local_context_dataset` folder unzipped from `data/idea-sentence/local_context_dataset.zip`.Move it to `idea-sentence/models/T5`.
 4. Find the `local_dataset` folder unzipped from `data/idea-node/local_dataset.zip`. Place them in `idea-node/models/Dual_Encoder`.
-5. Copy the file `e2t.json` and paste it into the following folders:  `idea-node\models\GPT3.5*\`, `idea-node\preprocess\`, `idea-sentence\models\GPT3.5*\`, and `idea-sentence\preprocess\`
+5. Copy the file `e2t.json` and paste it into the following folders:  `idea-node/models/GPT3.5*/`, `idea-node/preprocess/`, `idea-sentence/models/GPT3.5*/`, and `idea-sentence/preprocess/`
   
 ### Data Preprocess
 
-1. Navigate to the `idea-node\preprocess` and run the `bash preprocess.sh`
-2. Navigate to the `idea-sentence\preprocess` and run the `bash preprocess.sh` 
+1. Navigate to the `idea-node/preprocess` and run the `bash preprocess.sh`
+2. Navigate to the `idea-sentence/preprocess` and run the `bash preprocess.sh` 
 
 ### Data and Code Description
 
@@ -76,6 +76,10 @@ The project data includes the following components:
 5. `data/gold_subset`: This directory contains our gold annotation subsets.
 6. `idea-node/evaluation` and `idea-sentence/evaluation` contain sample evaluation code.
 
+
+### Results
+
+`result/sentence_generation.zip`: This zip file contains all GPT3.5/GPT4 results for idea-sentence generation task
 
 ## Quickstart
 
