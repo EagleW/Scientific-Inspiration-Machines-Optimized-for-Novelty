@@ -101,3 +101,12 @@ bash eval_*.sh
 ```
 
 ## Citation
+
+```
+@article{wang2023learning,
+  title={Learning to Generate Novel Scientific Directions with Contextualized Literature-based Discovery},
+  author={Wang, Qingyun and Downey, Doug and Ji, Heng and Hope, Tom},
+  journal={arXiv preprint arXiv:2305.14259},
+  year={2023}
+}
+```
