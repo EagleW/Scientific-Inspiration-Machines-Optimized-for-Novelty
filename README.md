@@ -15,7 +15,7 @@ Table of Contents
 ## Overview
 
 <p align="center">
-  <img src="https://eaglew.github.io/images/ai2.png?raw=true" alt="Photo" style="width: 100%;"/>
+  <img src="https://eaglew.github.io/images/ai2.png?raw=true" alt="Photo" style="width: 90%;"/>
 </p>
 
 ## Requirements
