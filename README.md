@@ -87,7 +87,7 @@ pip install -r requirements1.txt
 ### Data Preprocess
 
 1. Navigate to the `preprocess` and run the `bash preprocess.sh`
-2. Navigate to the `models\GPTRND` and run `preprocess.py`
+2. Navigate to the `models\GPTFS` and run `preprocess.py`
 3. Navigate to the `biomedical_models\*` and run `preprocess.py`
 
 ### Data and Code Description
