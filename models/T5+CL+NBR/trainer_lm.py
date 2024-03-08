@@ -44,7 +44,7 @@ class Trainer:
             from time import time
             start = time()
         
-        self.model = ContrastiveT5ForConditionalGeneration.from_pretrained("t5-large")
+        self.model = ContrastiveT5ForConditionalGeneration.from_pretrained("google-t5/t5-large")
         if self.verbose:
             print(get_total_params(self.model))
         if args.load is not None:
@@ -463,7 +463,7 @@ def main_worker(gpu, args):
         torch.cuda.set_device(args.gpu)
         dist.init_process_group(backend='nccl',
                                      init_method='env://', rank=args.rank, world_size=args.world_size)
-    tokenizer =  AutoTokenizer.from_pretrained(args.model)
+    tokenizer =  AutoTokenizer.from_pretrained("google-t5/t5-large")
 
     if args.test_only:
         print(f'Building submit test loader at GPU {gpu}')
