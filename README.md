@@ -103,7 +103,8 @@ The project data includes the following components:
 
 ### Results
 
-`result/sentence_generation.zip`: This zip file contains part of GPT3.5/GPT4 results
+`result/sentence_generation.zip`: This zip file contains GPT3.5/GPT4 for initial round results
+`result/iterative_novelty_boosting.zip`: This zip file contains GPT3.5/GPT4 for iterative novelty boosting results
 
 ## Quickstart for NLP domain
 
