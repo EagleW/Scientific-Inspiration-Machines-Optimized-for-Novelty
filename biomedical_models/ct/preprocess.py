@@ -11,10 +11,10 @@ new_path = 'data/cite/%s.json'
 
 for fname in ['train', 'valid', 'test']:
     all = []
-    with open(path % fname, 'r') as f:
+    with open(path % fname, 'r', encoding="utf-8") as f:
         for line in tqdm(f):
             data = json.loads(line)
             data.pop("date")
             all.append(data)
-    with open(new_path % fname, 'w') as f:
+    with open(new_path % fname, 'w', encoding="utf-8") as f:
         json.dump(all, f, indent=4)
